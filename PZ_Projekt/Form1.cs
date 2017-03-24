@@ -13,9 +13,15 @@ namespace PZ_Projekt
 {
     public partial class Form1 : Form
     {
+        DataTable table = new DataTable();
         public Form1()
         {
             InitializeComponent();
+            
+            table.Columns.Add("Podmacierz", typeof(string));
+            table.Columns.Add("N", typeof(string));
+            table.Columns.Add("Wartość energetyczna", typeof(string));
+            table.Columns.Add("Opis", typeof(string));
         }
 
         List<string> one;
@@ -34,19 +40,23 @@ namespace PZ_Projekt
                 }
                 one = dane(temp.ToArray<string>());
                 int licznik =0;
-                foreach (string temp2 in one)
+                for (int i=0; i<one.Count; i+=4)
                 {
-
+                    /*
                     if (licznik == 4)
                     {
+
                         richTextBox1.Text += "\n";
                         licznik = 0;
                     }
-                    richTextBox1.Text+= temp2.ToString();
-                    richTextBox1.Text += " ";
+                    */
+                    //richTextBox1.Text+= temp2.ToString();
+                    //richTextBox1.Text += " ";
+                    table.Rows.Add(one[i], one[i+1], one[i+2],one[i+3]);
                     licznik++;
 
                 }
+                dataGridView1.DataSource = table;
                 sr.Close();
             }
 
@@ -72,7 +82,6 @@ namespace PZ_Projekt
                     if (licznik2 == 4)
                     {
                         richTextBox2.Text += "\n";
-
                         licznik2 = 0;
                     }
                     richTextBox2.Text += temp2.ToString();
@@ -88,12 +97,12 @@ namespace PZ_Projekt
         {
             string[] dane = null;
             List<string> lista = new List<string>();
-            string pattern = @"^\s[1-9]\s+[1-9][0-9]*\s+[-]*[1-9]+[0-9]+.[0-9][0-9]*\s+[-]*[1-9][0-9]*.[0-9][0-9]*";
+            string pattern = @"^\s[1-9]\s+[1-9][0-9]*\s+[-]*[1-9]+[0-9]+.[0-9][0-9]*";
             string pattern1 = @"^\s[1-9]\s+[1-9][0-9]*\s+[-]*[1-9]+[0-9]+.[0-9][0-9]*\s+[-]*[1-9][0-9]*.[0-9][0-9]*.{0,71}";
             Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
             Regex rgx1 = new Regex(pattern1, RegexOptions.IgnoreCase);
             for (int i = 0; i < tab.Length; i++)
-            {
+            {   
                 string input;
                 input = tab[i];
                 MatchCollection matches = rgx.Matches(input);
@@ -104,7 +113,6 @@ namespace PZ_Projekt
                     //Console.WriteLine("{0} ({1} matches):", input, matches.Count);
                     foreach (Match match in matches)
                     {
-
                         //Console.WriteLine("   " + match.Value);
                         String[] splitTab = match.Value.Split(' ');
                         for (int j = 0; j < splitTab.Length; j++)
@@ -114,7 +122,7 @@ namespace PZ_Projekt
 
                                 Console.WriteLine(splitTab[j]);
                                 lista.Add(splitTab[j]);
-
+                            
                             }
 
                         }
