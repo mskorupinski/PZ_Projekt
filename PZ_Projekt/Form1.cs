@@ -14,14 +14,19 @@ namespace PZ_Projekt
     public partial class Form1 : Form
     {
         DataTable table = new DataTable();
+        DataTable table2 = new DataTable();
         public Form1()
         {
             InitializeComponent();
             
             table.Columns.Add("Podmacierz", typeof(string));
-            table.Columns.Add("N", typeof(string));
+ 
             table.Columns.Add("Wartość energetyczna", typeof(string));
             table.Columns.Add("Opis", typeof(string));
+
+            table2.Columns.Add("Podmacierz", typeof(string));
+            table2.Columns.Add("Wartość energetyczna", typeof(string));
+            table2.Columns.Add("Opis", typeof(string));
         }
 
         List<string> one;
@@ -52,7 +57,7 @@ namespace PZ_Projekt
                     */
                     //richTextBox1.Text+= temp2.ToString();
                     //richTextBox1.Text += " ";
-                    table.Rows.Add(one[i], one[i+1], one[i+2],one[i+3]);
+                    table.Rows.Add(one[i], one[i+2],one[i+3]);
                     licznik++;
 
                 }
@@ -75,20 +80,25 @@ namespace PZ_Projekt
                     temp.Add(sr.ReadLine());
                 }
                 two = dane(temp.ToArray<string>());
-                int licznik2 = 0;
-                foreach (string temp2 in two)
+                
+                for (int i = 0; i < two.Count; i += 4)
                 {
-
-                    if (licznik2 == 4)
+                    /*
+                    if (licznik == 4)
                     {
-                        richTextBox2.Text += "\n";
-                        licznik2 = 0;
+
+                        richTextBox1.Text += "\n";
+                        licznik = 0;
                     }
-                    richTextBox2.Text += temp2.ToString();
-                    richTextBox2.Text += " ";
-                    licznik2++;
+                    */
+                    //richTextBox1.Text+= temp2.ToString();
+                    //richTextBox1.Text += " ";
+                    table2.Rows.Add(two[i], two[i + 2], two[i + 3]);
+                    
 
                 }
+                dataGridView2.DataSource = table2;
+                sr.Close();
                 sr.Close();
             }
         }
