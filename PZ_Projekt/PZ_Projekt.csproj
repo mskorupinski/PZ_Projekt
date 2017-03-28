@@ -78,5 +78,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GroupedListControl\GroupedListControl.csproj">
+      <Project>{2c43437c-5e27-48be-bac3-a3d0cdb30bfb}</Project>
+      <Name>GroupedListControl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
