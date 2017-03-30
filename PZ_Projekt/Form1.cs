@@ -19,17 +19,21 @@ namespace PZ_Projekt
 
         public string _File1Name { get; set; }
         public string _File2Name { get; set; }
+        private int _MatrixCount { get; set; }
 
         ContextMenuStrip _ListGroupContextMenu;
         ToolStripMenuItem _addOption = new ToolStripMenuItem("Add");
         ToolStripMenuItem _editOption = new ToolStripMenuItem("Edit");
         ToolStripMenuItem _deleteOption = new ToolStripMenuItem("Delete");
 
-        
+        private GroupListControl glc;
+
+
+
         public Form1()
         {
             InitializeComponent();
-
+                       
             //  Set up the context menu to use with the GroupedList Items:
             _ListGroupContextMenu = new ContextMenuStrip();
 
@@ -137,7 +141,14 @@ namespace PZ_Projekt
                 temp.Add(sr.ReadLine());
             }
             one = dane(temp.ToArray<string>());
-            
+
+
+            _MatrixCount = Convert.ToInt32(one[(one.Count - 4)]);
+            for( int i=1;i<=7;i++)
+            {
+                this.comboBoxpodmacierz.Items.Add(i);
+                this.comboBoxpodmacierz.SelectedItem = 1;
+            }         
             sr.Close();
 
             sr = new
@@ -148,55 +159,58 @@ namespace PZ_Projekt
                 temp.Add(sr.ReadLine());
             }
             two = dane(temp.ToArray<string>());
-            
+                   
             sr.Close();
 
-            GroupListControl glc = this.groupListControl1;
+            glc = this.groupListControl1;
             glc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                 | System.Windows.Forms.AnchorStyles.Left)
                 | System.Windows.Forms.AnchorStyles.Right)));
-            
+
             // Add some sample columns:
             for (int i = 0; i < one.Count; i += 4)
             {
-                ListGroup lg = new ListGroup();
-
-                lg.Columns.Add(one[i], 120);
-                lg.Columns.Add(one[i +2], 150);
-                lg.Columns.Add(one[i + 3], 150);
-                lg.Name = "Group " + i;
-
-                // Now add some sample items:
-                /*
-                for (int j = 0; j < two.Count ; j++)
+                if (Convert.ToInt32(one[i]) == Convert.ToInt32(this.comboBoxpodmacierz.Text))
                 {
-                    ListViewItem item = lg.Items.Add("Item " + j.ToString());
-                    if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])- 1))
+                    ListGroup lg = new ListGroup();
+
+                    lg.Columns.Add(one[i], 120);
+                    lg.Columns.Add(one[i + 2], 150);
+                    lg.Columns.Add(one[i + 3], 150);
+                    lg.Name = "Group " + i;
+
+                    // Now add some sample items:
+                    /*
+                    for (int j = 0; j < two.Count ; j++)
                     {
-                        string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                        item.SubItems.Add(item.Text + temp1);
-                        item.SubItems.Add(item.Text + " SubItem 2");
+                        ListViewItem item = lg.Items.Add("Item " + j.ToString());
+                        if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])- 1))
+                        {
+                            string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                            item.SubItems.Add(item.Text + temp1);
+                            item.SubItems.Add(item.Text + " SubItem 2");
+                        }
+                        if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])))
+                        {
+                            //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                            item.SubItems.Add(item.Text + "bla");
+                        }
+                        if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i]) + 1))
+                        {
+                            //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                            //item.SubItems.Add(item.Text + temp1);
+                        }
                     }
-                    if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])))
-                    {
-                        //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                        item.SubItems.Add(item.Text + "bla");
-                    }
-                    if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i]) + 1))
-                    {
-                        //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                        //item.SubItems.Add(item.Text + temp1);
-                    }
+                    */
+
+                    // Add handling for the columnRightClick Event:
+                    lg.ColumnRightClick += new ListGroup.ColumnRightClickHandler(lg_ColumnRightClick);
+                    lg.MouseClick += new MouseEventHandler(lg_MouseClick);
+
+                    glc.Controls.Add(lg);
                 }
-                */
-
-                // Add handling for the columnRightClick Event:
-                lg.ColumnRightClick += new ListGroup.ColumnRightClickHandler(lg_ColumnRightClick);
-                lg.MouseClick += new MouseEventHandler(lg_MouseClick);
-
-                glc.Controls.Add(lg);
             }
-            
+
         }
 
         
@@ -216,9 +230,8 @@ namespace PZ_Projekt
                     temp.Add(sr.ReadLine());
                 }
                 two = dane(temp.ToArray<string>());
+                              
                 
-                
-                sr.Close();
                 sr.Close();
             }
         }
@@ -370,8 +383,58 @@ namespace PZ_Projekt
             }
         }
 
+        private void comboBoxpodmacierz_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (glc!=null && glc.Controls != null)
+            {
+                while (glc.Controls.Count>0)
+                    glc.Controls.RemoveAt(0);
+                for (int i = 0; i < one.Count; i += 4)
+                {
+                    if (Convert.ToInt32(one[i]) == Convert.ToInt32(this.comboBoxpodmacierz.Text))
+                    {
+                        ListGroup lg = new ListGroup();
 
-        
+                        lg.Columns.Add(one[i], 120);
+                        lg.Columns.Add(one[i + 2], 150);
+                        lg.Columns.Add(one[i + 3], 150);
+                        lg.Name = "Group " + i;
 
+                        // Now add some sample items:
+                        /*
+                        for (int j = 0; j < two.Count ; j++)
+                        {
+                            ListViewItem item = lg.Items.Add("Item " + j.ToString());
+                            if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])- 1))
+                            {
+                                string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                                item.SubItems.Add(item.Text + temp1);
+                                item.SubItems.Add(item.Text + " SubItem 2");
+                            }
+                            if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])))
+                            {
+                                //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                                item.SubItems.Add(item.Text + "bla");
+                            }
+                            if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i]) + 1))
+                            {
+                                //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                                //item.SubItems.Add(item.Text + temp1);
+                            }
+                        }
+                        */
+
+                        // Add handling for the columnRightClick Event:
+                        lg.ColumnRightClick += new ListGroup.ColumnRightClickHandler(lg_ColumnRightClick);
+                        lg.MouseClick += new MouseEventHandler(lg_MouseClick);
+
+                        glc.Controls.Add(lg);
+                    }
+                }
+                comboBoxpodmacierz.Enabled = false;
+                comboBoxpodmacierz.Enabled = true;
+            }
+        }
     }
 }
