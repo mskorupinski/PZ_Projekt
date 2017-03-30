@@ -25,20 +25,10 @@ namespace PZ_Projekt
         ToolStripMenuItem _editOption = new ToolStripMenuItem("Edit");
         ToolStripMenuItem _deleteOption = new ToolStripMenuItem("Delete");
 
-        DataTable table = new DataTable();
-        DataTable table2 = new DataTable();
+        
         public Form1()
         {
             InitializeComponent();
-
-            table.Columns.Add("Podmacierz", typeof(string));
-
-            table.Columns.Add("Wartość energetyczna", typeof(string));
-            table.Columns.Add("Opis", typeof(string));
-
-            table2.Columns.Add("Podmacierz", typeof(string));
-            table2.Columns.Add("Wartość energetyczna", typeof(string));
-            table2.Columns.Add("Opis", typeof(string));
 
             //  Set up the context menu to use with the GroupedList Items:
             _ListGroupContextMenu = new ContextMenuStrip();
@@ -147,17 +137,7 @@ namespace PZ_Projekt
                 temp.Add(sr.ReadLine());
             }
             one = dane(temp.ToArray<string>());
-            int licznik = 0;
-            /*
-            for (int i = 0; i < one.Count; i += 4)
-            {
-               
-                table.Rows.Add(one[i], one[i + 2], one[i + 3]);
-                licznik++;
-
-            }
-            */
-            dataGridView1.DataSource = table;
+            
             sr.Close();
 
             sr = new
@@ -168,27 +148,19 @@ namespace PZ_Projekt
                 temp.Add(sr.ReadLine());
             }
             two = dane(temp.ToArray<string>());
-            /*
-            for (int i = 0; i < two.Count; i += 4)
-            {
-             
-                table2.Rows.Add(two[i], two[i + 2], two[i + 3]);
-
-
-            }
-            */
-            dataGridView2.DataSource = table2;
+            
             sr.Close();
 
             GroupListControl glc = this.groupListControl1;
             glc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                 | System.Windows.Forms.AnchorStyles.Left)
                 | System.Windows.Forms.AnchorStyles.Right)));
-
+            
             // Add some sample columns:
             for (int i = 0; i < one.Count; i += 4)
             {
                 ListGroup lg = new ListGroup();
+
                 lg.Columns.Add(one[i], 120);
                 lg.Columns.Add(one[i +2], 150);
                 lg.Columns.Add(one[i + 3], 150);
@@ -196,11 +168,25 @@ namespace PZ_Projekt
 
                 // Now add some sample items:
                 /*
-                for (int j = 1; j <= 5; j++)
+                for (int j = 0; j < two.Count ; j++)
                 {
                     ListViewItem item = lg.Items.Add("Item " + j.ToString());
-                    item.SubItems.Add(item.Text + " SubItem 1");
-                    item.SubItems.Add(item.Text + " SubItem 2");
+                    if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])- 1))
+                    {
+                        string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                        item.SubItems.Add(item.Text + temp1);
+                        item.SubItems.Add(item.Text + " SubItem 2");
+                    }
+                    if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])))
+                    {
+                        //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                        item.SubItems.Add(item.Text + "bla");
+                    }
+                    if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i]) + 1))
+                    {
+                        //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
+                        //item.SubItems.Add(item.Text + temp1);
+                    }
                 }
                 */
 
@@ -210,6 +196,7 @@ namespace PZ_Projekt
 
                 glc.Controls.Add(lg);
             }
+            
         }
 
         
@@ -230,23 +217,7 @@ namespace PZ_Projekt
                 }
                 two = dane(temp.ToArray<string>());
                 
-                for (int i = 0; i < two.Count; i += 4)
-                {
-                    /*
-                    if (licznik == 4)
-                    {
-
-                        richTextBox1.Text += "\n";
-                        licznik = 0;
-                    }
-                    */
-                    //richTextBox1.Text+= temp2.ToString();
-                    //richTextBox1.Text += " ";
-                    table2.Rows.Add(two[i], two[i + 2], two[i + 3]);
-                    
-
-                }
-                dataGridView2.DataSource = table2;
+                
                 sr.Close();
                 sr.Close();
             }

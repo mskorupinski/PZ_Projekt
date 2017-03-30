@@ -36,12 +36,8 @@
             this.buttonDelete1 = new System.Windows.Forms.Button();
             this.buttonDelete2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupListControl1 = new GroupedListControl.GroupListControl();
             this.chkSingleItemOnlyMode = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialogFile1
@@ -124,26 +120,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1060, 174);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(85, 500);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(1173, 174);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(65, 500);
-            this.dataGridView2.TabIndex = 5;
-            // 
             // groupListControl1
             // 
             this.groupListControl1.AutoScroll = true;
@@ -151,7 +127,7 @@
             this.groupListControl1.Location = new System.Drawing.Point(63, 203);
             this.groupListControl1.Name = "groupListControl1";
             this.groupListControl1.SingleItemOnlyExpansion = false;
-            this.groupListControl1.Size = new System.Drawing.Size(775, 450);
+            this.groupListControl1.Size = new System.Drawing.Size(1138, 450);
             this.groupListControl1.TabIndex = 6;
             this.groupListControl1.WrapContents = false;
             // 
@@ -175,8 +151,6 @@
             this.ClientSize = new System.Drawing.Size(1268, 738);
             this.Controls.Add(this.chkSingleItemOnlyMode);
             this.Controls.Add(this.groupListControl1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDelete2);
             this.Controls.Add(this.buttonDelete1);
@@ -187,8 +161,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,8 +177,6 @@
         private System.Windows.Forms.Button buttonDelete2;
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private GroupedListControl.GroupListControl groupListControl1;
         private System.Windows.Forms.CheckBox chkSingleItemOnlyMode;
     }
