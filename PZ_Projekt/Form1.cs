@@ -144,7 +144,7 @@ namespace PZ_Projekt
 
 
             _MatrixCount = Convert.ToInt32(one[(one.Count - 4)]);
-            for( int i=1;i<=7;i++)
+            for( int i=1;i<=_MatrixCount;i++)
             {
                 this.comboBoxpodmacierz.Items.Add(i);
                 this.comboBoxpodmacierz.SelectedItem = 1;
@@ -166,9 +166,13 @@ namespace PZ_Projekt
             glc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                 | System.Windows.Forms.AnchorStyles.Left)
                 | System.Windows.Forms.AnchorStyles.Right)));
-
-            // Add some sample columns:
-            for (int i = 0; i < one.Count; i += 4)
+            if (glc != null && glc.Controls != null)
+            {
+                while (glc.Controls.Count > 0)
+                    glc.Controls.RemoveAt(0);
+            }
+                // Add some sample columns:
+                for (int i = 0; i < one.Count; i += 4)
             {
                 if (Convert.ToInt32(one[i]) == Convert.ToInt32(this.comboBoxpodmacierz.Text))
                 {
@@ -210,7 +214,9 @@ namespace PZ_Projekt
                     glc.Controls.Add(lg);
                 }
             }
-
+            this.labelPodmacierz.Visible = true;
+            this.comboBoxpodmacierz.Visible = true;
+           
         }
 
         

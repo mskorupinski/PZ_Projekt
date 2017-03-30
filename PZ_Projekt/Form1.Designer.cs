@@ -144,9 +144,9 @@
             this.chkSingleItemOnlyMode.Location = new System.Drawing.Point(47, 141);
             this.chkSingleItemOnlyMode.Margin = new System.Windows.Forms.Padding(2);
             this.chkSingleItemOnlyMode.Name = "chkSingleItemOnlyMode";
-            this.chkSingleItemOnlyMode.Size = new System.Drawing.Size(80, 17);
+            this.chkSingleItemOnlyMode.Size = new System.Drawing.Size(77, 17);
             this.chkSingleItemOnlyMode.TabIndex = 7;
-            this.chkSingleItemOnlyMode.Text = "checkBox1";
+            this.chkSingleItemOnlyMode.Text = "Rozwijanie";
             this.chkSingleItemOnlyMode.UseVisualStyleBackColor = true;
             this.chkSingleItemOnlyMode.CheckedChanged += new System.EventHandler(this.chkSingleItemOnlyMode_CheckedChanged);
             // 
@@ -157,6 +157,7 @@
             this.comboBoxpodmacierz.Name = "comboBoxpodmacierz";
             this.comboBoxpodmacierz.Size = new System.Drawing.Size(121, 21);
             this.comboBoxpodmacierz.TabIndex = 8;
+            this.comboBoxpodmacierz.Visible = false;
             this.comboBoxpodmacierz.SelectedIndexChanged += new System.EventHandler(this.comboBoxpodmacierz_SelectedIndexChanged);
             // 
             // labelPodmacierz
@@ -167,6 +168,7 @@
             this.labelPodmacierz.Size = new System.Drawing.Size(102, 13);
             this.labelPodmacierz.TabIndex = 9;
             this.labelPodmacierz.Text = "Wybierz podmacierz";
+            this.labelPodmacierz.Visible = false;
             // 
             // Form1
             // 
