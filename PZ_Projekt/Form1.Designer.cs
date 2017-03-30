@@ -49,20 +49,18 @@
             // labelFiles
             // 
             this.labelFiles.AutoSize = true;
-            this.labelFiles.Location = new System.Drawing.Point(22, 8);
-            this.labelFiles.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFiles.Location = new System.Drawing.Point(29, 10);
             this.labelFiles.Name = "labelFiles";
-            this.labelFiles.Size = new System.Drawing.Size(66, 13);
+            this.labelFiles.Size = new System.Drawing.Size(86, 17);
             this.labelFiles.TabIndex = 0;
             this.labelFiles.Text = "Dodane pliki";
             // 
             // labelFile1
             // 
             this.labelFile1.AutoSize = true;
-            this.labelFile1.Location = new System.Drawing.Point(22, 21);
-            this.labelFile1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFile1.Location = new System.Drawing.Point(29, 26);
             this.labelFile1.Name = "labelFile1";
-            this.labelFile1.Size = new System.Drawing.Size(39, 13);
+            this.labelFile1.Size = new System.Drawing.Size(50, 17);
             this.labelFile1.TabIndex = 1;
             this.labelFile1.Text = "Plik1:  ";
             this.labelFile1.Visible = false;
@@ -70,20 +68,19 @@
             // labelFile2
             // 
             this.labelFile2.AutoSize = true;
-            this.labelFile2.Location = new System.Drawing.Point(22, 34);
-            this.labelFile2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFile2.Location = new System.Drawing.Point(29, 42);
             this.labelFile2.Name = "labelFile2";
-            this.labelFile2.Size = new System.Drawing.Size(39, 13);
+            this.labelFile2.Size = new System.Drawing.Size(50, 17);
             this.labelFile2.TabIndex = 2;
             this.labelFile2.Text = "Plik2:  ";
             this.labelFile2.Visible = false;
             // 
             // buttonAddFile
             // 
-            this.buttonAddFile.Location = new System.Drawing.Point(25, 49);
-            this.buttonAddFile.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddFile.Location = new System.Drawing.Point(33, 60);
+            this.buttonAddFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddFile.Name = "buttonAddFile";
-            this.buttonAddFile.Size = new System.Drawing.Size(63, 21);
+            this.buttonAddFile.Size = new System.Drawing.Size(84, 26);
             this.buttonAddFile.TabIndex = 3;
             this.buttonAddFile.Text = "Dodaj plik";
             this.buttonAddFile.UseVisualStyleBackColor = true;
@@ -91,10 +88,10 @@
             // 
             // buttonDelete1
             // 
-            this.buttonDelete1.Location = new System.Drawing.Point(469, 16);
-            this.buttonDelete1.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelete1.Location = new System.Drawing.Point(625, 20);
+            this.buttonDelete1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete1.Name = "buttonDelete1";
-            this.buttonDelete1.Size = new System.Drawing.Size(42, 22);
+            this.buttonDelete1.Size = new System.Drawing.Size(56, 27);
             this.buttonDelete1.TabIndex = 4;
             this.buttonDelete1.Text = "Usuń";
             this.buttonDelete1.UseVisualStyleBackColor = true;
@@ -103,10 +100,10 @@
             // 
             // buttonDelete2
             // 
-            this.buttonDelete2.Location = new System.Drawing.Point(469, 34);
-            this.buttonDelete2.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelete2.Location = new System.Drawing.Point(625, 42);
+            this.buttonDelete2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete2.Name = "buttonDelete2";
-            this.buttonDelete2.Size = new System.Drawing.Size(42, 22);
+            this.buttonDelete2.Size = new System.Drawing.Size(56, 27);
             this.buttonDelete2.TabIndex = 5;
             this.buttonDelete2.Text = "Usuń";
             this.buttonDelete2.UseVisualStyleBackColor = true;
@@ -116,9 +113,10 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(25, 75);
+            this.button1.Location = new System.Drawing.Point(33, 92);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 30);
+            this.button1.Size = new System.Drawing.Size(267, 37);
             this.button1.TabIndex = 0;
             this.button1.Text = "Generuj";
             this.button1.UseVisualStyleBackColor = true;
@@ -128,11 +126,11 @@
             // 
             this.groupListControl1.AutoScroll = true;
             this.groupListControl1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.groupListControl1.Location = new System.Drawing.Point(47, 165);
-            this.groupListControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupListControl1.Location = new System.Drawing.Point(63, 203);
+            this.groupListControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupListControl1.Name = "groupListControl1";
             this.groupListControl1.SingleItemOnlyExpansion = false;
-            this.groupListControl1.Size = new System.Drawing.Size(581, 366);
+            this.groupListControl1.Size = new System.Drawing.Size(775, 450);
             this.groupListControl1.TabIndex = 6;
             this.groupListControl1.WrapContents = false;
             // 
@@ -141,21 +139,23 @@
             this.chkSingleItemOnlyMode.AutoSize = true;
             this.chkSingleItemOnlyMode.Checked = true;
             this.chkSingleItemOnlyMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSingleItemOnlyMode.Location = new System.Drawing.Point(47, 141);
-            this.chkSingleItemOnlyMode.Margin = new System.Windows.Forms.Padding(2);
+            this.chkSingleItemOnlyMode.Location = new System.Drawing.Point(63, 174);
+            this.chkSingleItemOnlyMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkSingleItemOnlyMode.Name = "chkSingleItemOnlyMode";
-            this.chkSingleItemOnlyMode.Size = new System.Drawing.Size(77, 17);
+            this.chkSingleItemOnlyMode.Size = new System.Drawing.Size(97, 21);
             this.chkSingleItemOnlyMode.TabIndex = 7;
             this.chkSingleItemOnlyMode.Text = "Rozwijanie";
             this.chkSingleItemOnlyMode.UseVisualStyleBackColor = true;
+            this.chkSingleItemOnlyMode.Visible = false;
             this.chkSingleItemOnlyMode.CheckedChanged += new System.EventHandler(this.chkSingleItemOnlyMode_CheckedChanged);
             // 
             // comboBoxpodmacierz
             // 
             this.comboBoxpodmacierz.FormattingEnabled = true;
-            this.comboBoxpodmacierz.Location = new System.Drawing.Point(274, 137);
+            this.comboBoxpodmacierz.Location = new System.Drawing.Point(365, 169);
+            this.comboBoxpodmacierz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxpodmacierz.Name = "comboBoxpodmacierz";
-            this.comboBoxpodmacierz.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxpodmacierz.Size = new System.Drawing.Size(160, 24);
             this.comboBoxpodmacierz.TabIndex = 8;
             this.comboBoxpodmacierz.Visible = false;
             this.comboBoxpodmacierz.SelectedIndexChanged += new System.EventHandler(this.comboBoxpodmacierz_SelectedIndexChanged);
@@ -163,18 +163,19 @@
             // labelPodmacierz
             // 
             this.labelPodmacierz.AutoSize = true;
-            this.labelPodmacierz.Location = new System.Drawing.Point(166, 141);
+            this.labelPodmacierz.Location = new System.Drawing.Point(221, 174);
+            this.labelPodmacierz.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPodmacierz.Name = "labelPodmacierz";
-            this.labelPodmacierz.Size = new System.Drawing.Size(102, 13);
+            this.labelPodmacierz.Size = new System.Drawing.Size(136, 17);
             this.labelPodmacierz.TabIndex = 9;
             this.labelPodmacierz.Text = "Wybierz podmacierz";
             this.labelPodmacierz.Visible = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 600);
+            this.ClientSize = new System.Drawing.Size(1268, 738);
             this.Controls.Add(this.labelPodmacierz);
             this.Controls.Add(this.comboBoxpodmacierz);
             this.Controls.Add(this.chkSingleItemOnlyMode);
@@ -186,6 +187,7 @@
             this.Controls.Add(this.labelFiles);
             this.Controls.Add(this.labelFile1);
             this.Controls.Add(this.labelFile2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

@@ -216,6 +216,7 @@ namespace PZ_Projekt
             }
             this.labelPodmacierz.Visible = true;
             this.comboBoxpodmacierz.Visible = true;
+            this.chkSingleItemOnlyMode.Visible = true;
            
         }
 
