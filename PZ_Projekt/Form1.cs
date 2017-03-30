@@ -442,5 +442,42 @@ namespace PZ_Projekt
                 comboBoxpodmacierz.Enabled = true;
             }
         }
+
+        static List<String> oblicz(String numer_macierzy, string energia, List<string> Two)
+        {
+            List<String> wynik = new List<String>();
+
+            for (int i = 0; i < Two.Count; i++)
+            {
+
+                if (i % 4 == 0)
+                {
+                    if (Int32.Parse(numer_macierzy) - 1 == Int32.Parse(Two[i]) || Int32.Parse(numer_macierzy) == Int32.Parse(Two[i]) || Int32.Parse(numer_macierzy) + 1 == Int32.Parse(numer_macierzy))
+                    {
+                        wynik.Add(Two[i]);
+                        Double Energia = Double.Parse(Two[i + 2]) - Double.Parse(energia);
+                        wynik.Add(Two[i + 2].ToString());
+                        wynik.Add(Two[i + 3].ToString());
+                        wynik.Add(Energia.ToString());
+                        
+
+
+
+
+
+                    }
+                }
+
+
+
+            }
+
+
+            return wynik;
+        }
+
+
+
+
     }
 }
