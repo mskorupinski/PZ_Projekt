@@ -114,7 +114,7 @@
             // 
             this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(33, 92);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 37);
             this.button1.TabIndex = 0;
@@ -153,7 +153,7 @@
             // 
             this.comboBoxpodmacierz.FormattingEnabled = true;
             this.comboBoxpodmacierz.Location = new System.Drawing.Point(365, 169);
-            this.comboBoxpodmacierz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxpodmacierz.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxpodmacierz.Name = "comboBoxpodmacierz";
             this.comboBoxpodmacierz.Size = new System.Drawing.Size(160, 24);
             this.comboBoxpodmacierz.TabIndex = 8;
@@ -187,9 +187,9 @@
             this.Controls.Add(this.labelFiles);
             this.Controls.Add(this.labelFile1);
             this.Controls.Add(this.labelFile2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "r";
             this.ResumeLayout(false);
             this.PerformLayout();
 

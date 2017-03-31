@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GroupedListControl;
+using System.IO;
 
 namespace PZ_Projekt
 {
@@ -218,9 +219,11 @@ namespace PZ_Projekt
             this.comboBoxpodmacierz.Visible = true;
             this.chkSingleItemOnlyMode.Visible = true;
            
+
+
         }
 
-        
+
 
 
 
@@ -447,32 +450,46 @@ namespace PZ_Projekt
         static List<String> oblicz(String numer_macierzy, string energia, List<string> Two)
         {
             List<String> wynik = new List<String>();
-
             for (int i = 0; i < Two.Count; i++)
             {
 
                 if (i % 4 == 0)
                 {
-                    if (Int32.Parse(numer_macierzy) - 1 == Int32.Parse(Two[i]) || Int32.Parse(numer_macierzy) == Int32.Parse(Two[i]) || Int32.Parse(numer_macierzy) + 1 == Int32.Parse(numer_macierzy))
+                    if (Int32.Parse(numer_macierzy) - 1 == Int32.Parse(Two[i]) || Int32.Parse(numer_macierzy) == Int32.Parse(Two[i]) || Int32.Parse(numer_macierzy) + 1 == Int32.Parse(Two[i]))
                     {
                         wynik.Add(Two[i]);
-                        Double Energia = Double.Parse(Two[i + 2]) - Double.Parse(energia);
+                        Double Energia_one = Double.Parse(energia.Replace(".",","));
+                        Double Energia_two = Double.Parse(Two[i + 2].Replace(".",","));
+                        Double Liczba_falowa = Math.Abs(Energia_two - Energia_one);
                         wynik.Add(Two[i + 2].ToString());
                         wynik.Add(Two[i + 3].ToString());
-                        wynik.Add(Energia.ToString());
-                        
+                        wynik.Add(Liczba_falowa.ToString());
+                        if (Liczba_falowa >= 50000)
+                        {
+                            Double dlugosc = 1000000000 / Liczba_falowa;
+                            wynik.Add(dlugosc.ToString());
+                        }
+                        if (Liczba_falowa < 50000)
+                        {
+                            Double n = 1 + (8060.51 + 2480990 / (132.2474 - Math.Pow((Liczba_falowa / 10000), 2) + 17455.7 / (39.32957 - Math.Pow((Liczba_falowa / 1000),2)))) * 0.00000001;
+                            Double dlugosc = 1000000000 / (Liczba_falowa*n);
+                            wynik.Add(dlugosc.ToString());
+
+
+                        }
 
 
 
 
 
                     }
+
+
                 }
 
-
+              
 
             }
-
 
             return wynik;
         }
