@@ -126,11 +126,11 @@
             // 
             this.groupListControl1.AutoScroll = true;
             this.groupListControl1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.groupListControl1.Location = new System.Drawing.Point(63, 203);
+            this.groupListControl1.Location = new System.Drawing.Point(33, 203);
             this.groupListControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupListControl1.Name = "groupListControl1";
             this.groupListControl1.SingleItemOnlyExpansion = false;
-            this.groupListControl1.Size = new System.Drawing.Size(775, 450);
+            this.groupListControl1.Size = new System.Drawing.Size(1202, 497);
             this.groupListControl1.TabIndex = 6;
             this.groupListControl1.WrapContents = false;
             // 

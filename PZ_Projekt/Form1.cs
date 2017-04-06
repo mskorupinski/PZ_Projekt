@@ -164,6 +164,7 @@ namespace PZ_Projekt
             sr.Close();
 
             glc = this.groupListControl1;
+            glc.Visible = false;
             glc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                 | System.Windows.Forms.AnchorStyles.Left)
                 | System.Windows.Forms.AnchorStyles.Right)));
@@ -173,56 +174,75 @@ namespace PZ_Projekt
                     glc.Controls.RemoveAt(0);
             }
                 // Add some sample columns:
-                for (int i = 0; i < one.Count; i += 4)
+            for (int i = 0; i < one.Count; i += 4)
             {
                 if (Convert.ToInt32(one[i]) == Convert.ToInt32(this.comboBoxpodmacierz.Text))
                 {
                     ListGroup lg = new ListGroup();
+                
 
                     lg.Columns.Add(one[i], 120);
                     lg.Columns.Add(one[i + 2], 150);
                     lg.Columns.Add(one[i + 3], 150);
+                    lg.Columns.Add("Długość falowa", 150);
+                    lg.Columns.Add("Sigma", 150);
+                    lg.Columns.Add("Przejście", 150);
                     lg.Name = "Group " + i;
 
-                    // Now add some sample items:
-                    /*
-                    for (int j = 0; j < two.Count ; j++)
+
+                    List<string> wynik = oblicz(this.comboBoxpodmacierz.Text, one[i], two);
+
+                    for (int j = 0; j < wynik.Count; j += 5)
                     {
-                        ListViewItem item = lg.Items.Add("Item " + j.ToString());
-                        if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])- 1))
-                        {
-                            string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                            item.SubItems.Add(item.Text + temp1);
-                            item.SubItems.Add(item.Text + " SubItem 2");
-                        }
-                        if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])))
-                        {
-                            //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                            item.SubItems.Add(item.Text + "bla");
-                        }
-                        if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i]) + 1))
-                        {
-                            //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                            //item.SubItems.Add(item.Text + temp1);
-                        }
+                        ListViewItem item = lg.Items.Add(wynik[j]);
+                        item.SubItems.Add(wynik[j + 1]);
+                        item.SubItems.Add(wynik[j + 2]);
+                        item.SubItems.Add(wynik[j + 3]);
+                        item.SubItems.Add(wynik[j + 4]);
                     }
-                    */
 
                     // Add handling for the columnRightClick Event:
                     lg.ColumnRightClick += new ListGroup.ColumnRightClickHandler(lg_ColumnRightClick);
+                    //lg.GroupCollapsed += new ListGroup.GroupExpansionHandler(lg_GroupCollapsed);
+                    lg.GroupExpanded += new ListGroup.GroupExpansionHandler(lg_GroupExpanded);
                     lg.MouseClick += new MouseEventHandler(lg_MouseClick);
 
                     glc.Controls.Add(lg);
                 }
             }
+            glc.Visible = true;
             this.labelPodmacierz.Visible = true;
             this.comboBoxpodmacierz.Visible = true;
             this.chkSingleItemOnlyMode.Visible = true;
-           
-
+          
 
         }
 
+        public bool SingleItemOnlyExpansion { get; set; }
+
+        void lg_GroupExpanded(object sender, EventArgs e )
+        {
+            // Grab a reference to the ListGroup which sent the message:
+            ListGroup expanded = (ListGroup)sender;
+           
+           //ListViewHitTestInfo info = expanded.HitTest(e.X, e.Y);
+           // ListViewItem itemTemp = info.Item;
+            // If Single item only expansion, collapse all ListGroups in except
+            // the one currently exanding:
+            if (this.SingleItemOnlyExpansion)
+            {
+                this.SuspendLayout();
+                foreach (ListGroup lgTemp in this.Controls)
+                {
+                    
+                    if (!lgTemp.Equals(expanded))
+                    
+                        lgTemp.Collapse();
+                }
+                this.ResumeLayout(true);
+            }
+
+        }
 
 
 
@@ -400,6 +420,7 @@ namespace PZ_Projekt
             {
                 while (glc.Controls.Count>0)
                     glc.Controls.RemoveAt(0);
+                glc.Visible = false;
                 for (int i = 0; i < one.Count; i += 4)
                 {
                     if (Convert.ToInt32(one[i]) == Convert.ToInt32(this.comboBoxpodmacierz.Text))
@@ -409,39 +430,30 @@ namespace PZ_Projekt
                         lg.Columns.Add(one[i], 120);
                         lg.Columns.Add(one[i + 2], 150);
                         lg.Columns.Add(one[i + 3], 150);
+                        lg.Columns.Add("Długość falowa", 150);
+                        lg.Columns.Add("Sigma", 150);
+                        lg.Columns.Add("Przejście", 150);
                         lg.Name = "Group " + i;
 
-                        // Now add some sample items:
-                        /*
-                        for (int j = 0; j < two.Count ; j++)
-                        {
-                            ListViewItem item = lg.Items.Add("Item " + j.ToString());
-                            if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])- 1))
-                            {
-                                string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                                item.SubItems.Add(item.Text + temp1);
-                                item.SubItems.Add(item.Text + " SubItem 2");
-                            }
-                            if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i])))
-                            {
-                                //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                                item.SubItems.Add(item.Text + "bla");
-                            }
-                            if (Convert.ToInt32(one[i]) == (Convert.ToInt32(two[i]) + 1))
-                            {
-                                //string temp1 = (float.Parse((one[i + 2]).ToString()) - float.Parse((two[j + 2]).ToString())).ToString();
-                                //item.SubItems.Add(item.Text + temp1);
-                            }
-                        }
-                        */
+                        List<string> wynik = oblicz(this.comboBoxpodmacierz.Text, one[i], two);
 
-                        // Add handling for the columnRightClick Event:
+                        for (int j = 0; j < wynik.Count; j += 5)
+                        {
+                            ListViewItem item = lg.Items.Add(wynik[j]);
+                            item.SubItems.Add(wynik[j + 1]);
+                            item.SubItems.Add(wynik[j + 2]);
+                            item.SubItems.Add(wynik[j + 3]);
+                            item.SubItems.Add(wynik[j + 4]);
+
+
+                        }
                         lg.ColumnRightClick += new ListGroup.ColumnRightClickHandler(lg_ColumnRightClick);
                         lg.MouseClick += new MouseEventHandler(lg_MouseClick);
 
                         glc.Controls.Add(lg);
                     }
                 }
+                glc.Visible = true;
                 comboBoxpodmacierz.Enabled = false;
                 comboBoxpodmacierz.Enabled = true;
             }
@@ -477,10 +489,6 @@ namespace PZ_Projekt
 
 
                         }
-
-
-
-
 
                     }
 

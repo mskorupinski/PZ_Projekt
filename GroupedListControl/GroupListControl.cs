@@ -92,6 +92,7 @@ namespace GroupedListControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        
         void lg_GroupExpanded(object sender, EventArgs e)
         {
             // Grab a reference to the ListGroup which sent the message:
@@ -111,7 +112,7 @@ namespace GroupedListControl
             }
 
         }
-
+        
 
         /// <summary>
         /// Handles the Collapsed event for the current instance.
