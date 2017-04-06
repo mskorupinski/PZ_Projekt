@@ -184,13 +184,13 @@ namespace PZ_Projekt
                     lg.Columns.Add(one[i], 120);
                     lg.Columns.Add(one[i + 2], 150);
                     lg.Columns.Add(one[i + 3], 150);
-                    lg.Columns.Add("Długość falowa", 150);
-                    lg.Columns.Add("Sigma", 150);
+                    lg.Columns.Add("Liczba falowa", 150);
+                    lg.Columns.Add("Długość fali", 150);
                     lg.Columns.Add("Przejście", 150);
                     lg.Name = "Group " + i;
 
 
-                    List<string> wynik = oblicz(this.comboBoxpodmacierz.Text, one[i], two);
+                    List<string> wynik = oblicz(this.comboBoxpodmacierz.Text, one[i+2], two);
 
                     for (int j = 0; j < wynik.Count; j += 5)
                     {
@@ -430,8 +430,8 @@ namespace PZ_Projekt
                         lg.Columns.Add(one[i], 120);
                         lg.Columns.Add(one[i + 2], 150);
                         lg.Columns.Add(one[i + 3], 150);
-                        lg.Columns.Add("Długość falowa", 150);
-                        lg.Columns.Add("Sigma", 150);
+                        lg.Columns.Add("Liczba falowa", 150);
+                        lg.Columns.Add("Długość fali", 150);
                         lg.Columns.Add("Przejście", 150);
                         lg.Name = "Group " + i;
 
@@ -478,13 +478,14 @@ namespace PZ_Projekt
                         wynik.Add(Liczba_falowa.ToString());
                         if (Liczba_falowa >= 50000)
                         {
-                            Double dlugosc = 1000000000 / Liczba_falowa;
+                            Double dlugosc = Math.Round(100000000 / Liczba_falowa,4);
+                            
                             wynik.Add(dlugosc.ToString());
                         }
                         if (Liczba_falowa < 50000)
                         {
-                            Double n = 1 + (8060.51 + 2480990 / (132.2474 - Math.Pow((Liczba_falowa / 10000), 2) + 17455.7 / (39.32957 - Math.Pow((Liczba_falowa / 1000),2)))) * 0.00000001;
-                            Double dlugosc = 1000000000 / (Liczba_falowa*n);
+                            Double n = 1 + (8060.51 + 2480990 / (132.2474 - Math.Pow((Liczba_falowa / 10000), 2) + 17455.7 / (39.32957 - Math.Pow((Liczba_falowa / 10000),2)))) * 0.00000001;
+                            Double dlugosc = Math.Round(100000000 / (Liczba_falowa*n),4);
                             wynik.Add(dlugosc.ToString());
 
 
