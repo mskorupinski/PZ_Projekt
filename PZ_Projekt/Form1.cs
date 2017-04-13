@@ -192,13 +192,14 @@ namespace PZ_Projekt
 
                     List<string> wynik = oblicz(this.comboBoxpodmacierz.Text, one[i+2], two);
 
-                    for (int j = 0; j < wynik.Count; j += 5)
+                    for (int j = 0; j < wynik.Count; j += 6)
                     {
                         ListViewItem item = lg.Items.Add(wynik[j]);
                         item.SubItems.Add(wynik[j + 1]);
                         item.SubItems.Add(wynik[j + 2]);
                         item.SubItems.Add(wynik[j + 3]);
                         item.SubItems.Add(wynik[j + 4]);
+                        item.SubItems.Add(wynik[j + 5]);
                     }
 
                     // Add handling for the columnRightClick Event:
@@ -437,13 +438,14 @@ namespace PZ_Projekt
 
                         List<string> wynik = oblicz(this.comboBoxpodmacierz.Text, one[i], two);
 
-                        for (int j = 0; j < wynik.Count; j += 5)
+                        for (int j = 0; j < wynik.Count; j += 6)
                         {
                             ListViewItem item = lg.Items.Add(wynik[j]);
                             item.SubItems.Add(wynik[j + 1]);
                             item.SubItems.Add(wynik[j + 2]);
                             item.SubItems.Add(wynik[j + 3]);
                             item.SubItems.Add(wynik[j + 4]);
+                            item.SubItems.Add(wynik[j + 5]);
 
 
                         }
@@ -490,7 +492,12 @@ namespace PZ_Projekt
 
 
                         }
-
+                        if (Energia_two - Energia_one > 0)
+                        {
+                            wynik.Add("▲");
+                        }
+                        else
+                            wynik.Add("▼");
                     }
 
 
